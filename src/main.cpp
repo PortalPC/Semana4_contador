@@ -10,7 +10,7 @@ void mostrar_numero(char n){
 
   PORTD = (unidades <<4);
   PORTD |= 0x0C;
-  PORTB = decenas
+  PORTB = decenas;
     
 }
 
@@ -24,6 +24,45 @@ int main(void){
 
   mostrar_numero(numero);
 
-  
+  while(1){
+  if(!(PIND & 0x08)){
+    _delay_ms(50);
+    if (a==o){
+      modo = 1
+      a=1;
+
+    }else {
+      modo = 1;
+      a = 0;
+    }
   }
+  if(!(PIND& 0x04)){
+    _delay_ms(50);
+    if (b ==50){
+      modo = 2; 
+      b = 1;
+
+    }else {
+      modo = 2;
+      b = 0;
+    }
+  }
+
+  if (modo ==1){
+    numero++;
+    if (numero >99){
+      numero = 0;
+    }
+    mostrar_numero(numero);
+    _delay_ms(500);
+  }
+if (modo == 2 ){
+   if (numero ==0){
+    numero =99;
+   }
+   else numero--;
+   mostrar_numero(numero);
+   _delay_ms(500);
 }
+  }
+  }
