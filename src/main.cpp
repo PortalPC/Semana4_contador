@@ -1,5 +1,6 @@
 #include <avr/io.h>
 #define F_CPU 16000000UL
+#include <util/delay.h>
 
 char numero = 0;
 char modo = 0;
@@ -15,8 +16,8 @@ void mostrar_numero(char n){
 }
 
 int main(void){
-  DDRD|=0xF0;
-  DDRD & =~(0x0C);
+  DDRD |=0xF0;
+  DDRD &= ~(0x0C);
   DDRB |= 0x0F;
   PORTD |= 0x0C;
   char a = 0;
@@ -27,8 +28,8 @@ int main(void){
   while(1){
   if(!(PIND & 0x08)){
     _delay_ms(50);
-    if (a==o){
-      modo = 1
+    if (a == 0){
+      modo = 1;
       a=1;
 
     }else {
@@ -36,9 +37,9 @@ int main(void){
       a = 0;
     }
   }
-  if(!(PIND& 0x04)){
+  if(!(PIND & 0x04)){
     _delay_ms(50);
-    if (b ==50){
+    if (b == 0){
       modo = 2; 
       b = 1;
 
